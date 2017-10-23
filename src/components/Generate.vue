@@ -2,7 +2,7 @@
   <section class="hero is-dark">
     <div class="hero-body">
       <div class="container">
-        <form class="content has-text-centered" @submit.prevent="newImage">
+        <form class="content has-text-centered" @submit.prevent="createImage">
           <div class="field">
             <label class="label has-text-white">Enter a word or phrase</label>
             <div class="control">
@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import Drawing from '../lib/logic.js'
+
 export default {
   name: 'generate',
   data() {
@@ -25,14 +27,13 @@ export default {
     }
   },
   methods: {
-    newImage() {
-      console.log('clicking the submit');
-      console.log(this.textInput);
-      this.textInput = ''
+    createImage() {
+      // console.log('clicking the submit');
+      // console.log(this.textInput);
+      // this.textInput = ''
+      const art = new Drawing()
+      art.drawSvg('violet')
     }
   }
 }
 </script>
-
-<style lang="css">
-</style>

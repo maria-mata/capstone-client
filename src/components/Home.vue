@@ -3,19 +3,19 @@
     <!-- Form Component -->
     <generate/>
     <!-- Image Component -->
-    <drawing/>
+    <artboard/>
   </div>
 </template>
 
 <script>
 import Generate from './Generate'
-import Drawing from './Drawing'
+import Artboard from './Artboard'
 
 export default {
   name: 'Home',
   components: {
     Generate,
-    Drawing
+    Artboard
   }
 }
 </script>
