@@ -9,7 +9,6 @@ export default class Drawing {
     const numberOfShapes = 100
     const width = 800
     const height = 400
-    // const color = 'blue'
 
     this.drawContainer(width, height)
     this.drawFirstRectangle(width, height, color)
@@ -22,8 +21,9 @@ export default class Drawing {
     this.draw.size(width, height).viewbox(0, 0, width, height)
   }
   drawFirstRectangle(width, height, color) {
-    // let rc = this.relatedRandomColor(color)
-    let rc = this.randomColor()
+    let rc = this.relatedRandomColor(color)
+    // let rc = this.randomColor()
+    console.log(rc);
     this.draw.rect(width, height).fill(rc)
   }
   randomNumber(min, max) {
@@ -76,7 +76,15 @@ export default class Drawing {
         rb += 64
         break;
     }
-    return `#${rr}${rg}${rb}`
+    rr = Math.round(rr)
+    rg = Math.round(rg)
+    rb = Math.round(rb)
+
+    return "#" + this.componentToHex(rr) + this.componentToHex(rg) + this.componentToHex(rb)
+  }
+  componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
   }
   drawShapes(width, height, color) {
     let randomNumber = this.randomNumber(0, 5)
@@ -88,8 +96,8 @@ export default class Drawing {
     let rx = this.randomNumber(-width, width)
     let ry = this.randomNumber(-height, height)
     let rr = this.randomNumber(0, Math.max(width, height))
-    // let rc = this.relatedRandomColor(color)
-    let rc = this.randomColor()
+    let rc = this.relatedRandomColor(color)
+    // let rc = this.randomColor()
     let rf = this.randomNumber(0, 1000) / 2000
 
     this.draw.circle(rr).cx(rx).cy(ry).attr({
@@ -104,8 +112,8 @@ export default class Drawing {
     let ry1 = this.randomNumber(-height, height)
     let ry2 = this.randomNumber(-height, height)
     let ry3 = this.randomNumber(-height, height)
-    // let rc = this.relatedRandomColor(color)
-    let rc = this.randomColor()
+    let rc = this.relatedRandomColor(color)
+    // let rc = this.randomColor()
     let rf = this.randomNumber(0, 1000) / 2000
     let points = `${rx1},${ry1} ${rx2},${ry2} ${rx3},${ry3}`
 
@@ -119,8 +127,8 @@ export default class Drawing {
     let rx2 = this.randomNumber(-width, width)
     let ry1 = this.randomNumber(-height, height)
     let ry2 = this.randomNumber(-height, height)
-    // let rc = this.relatedRandomColor(color)
-    let rc = this.randomColor()
+    let rc = this.relatedRandomColor(color)
+    // let rc = this.randomColor()
     let rf = this.randomNumber(0, 1000) / 2000
 
     this.draw.rect(Math.abs(rx2-rx1), Math.abs(ry2-ry1)).cx(rx1).cy(ry1).attr({

@@ -28,9 +28,7 @@ export default {
   },
   methods: {
     createImage() {
-      // console.log('clicking the submit');
-      // console.log(this.textInput);
-      // this.textInput = ''
+      this.textInput = ''
       const art = new Drawing()
       art.drawSvg('violet')
     }
