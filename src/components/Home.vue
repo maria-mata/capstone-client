@@ -1,20 +1,21 @@
 <template>
-  <section class="section">
-    <div class="container">
-      <div class="box">
-      </div>
-    </div>
-  </section>
+  <div>
+    <!-- Form Component -->
+    <generate/>
+    <!-- Image Component -->
+    <drawing/>
+  </div>
 </template>
 
 <script>
+import Generate from './Generate'
+import Drawing from './Drawing'
+
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: {
+    Generate,
+    Drawing
+  }
 }
 </script>
-
-<style scoped>
-  .box {
-    height: 60vh;
-  }
-</style>
