@@ -30,7 +30,7 @@ export default {
     createImage() {
       this.textInput = ''
       const art = new Drawing()
-      art.drawSvg('violet')
+      art.drawSvg('all')
     }
   }
 }

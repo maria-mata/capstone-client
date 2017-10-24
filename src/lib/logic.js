@@ -22,14 +22,12 @@ export default class Drawing {
   }
   drawFirstRectangle(width, height, color) {
     let rc = this.relatedRandomColor(color)
-    // let rc = this.randomColor()
-    console.log(rc);
     this.draw.rect(width, height).fill(rc)
   }
   randomNumber(min, max) {
     return Math.random() * (max - min) + min;
   }
-  randomColor() { // not sure if will need
+  randomColor() {
     let color = '#000000'.replace(/0/g, function() {
       return (~~(Math.random()*16)).toString(16)
     })
@@ -39,7 +37,6 @@ export default class Drawing {
     let rr = this.randomNumber(0, 127)
     let rg = this.randomNumber(0, 127)
     let rb = this.randomNumber(0, 127)
-    // is the color 'red', 'orange'?? etc...
     switch(color) {
       case 'red' :
         rr += 128
@@ -75,6 +72,10 @@ export default class Drawing {
         rg += 64
         rb += 64
         break;
+      case 'all' :
+        return this.randomColor()
+        break;
+        // include pink?
     }
     rr = Math.round(rr)
     rg = Math.round(rg)
@@ -97,7 +98,6 @@ export default class Drawing {
     let ry = this.randomNumber(-height, height)
     let rr = this.randomNumber(0, Math.max(width, height))
     let rc = this.relatedRandomColor(color)
-    // let rc = this.randomColor()
     let rf = this.randomNumber(0, 1000) / 2000
 
     this.draw.circle(rr).cx(rx).cy(ry).attr({
@@ -105,7 +105,7 @@ export default class Drawing {
       opacity: rf
     })
   }
-  drawTriangle(width, height, color) { // this works
+  drawTriangle(width, height, color) {
     let rx1 = this.randomNumber(-width, width)
     let rx2 = this.randomNumber(-width, width)
     let rx3 = this.randomNumber(-width, width)
@@ -113,7 +113,6 @@ export default class Drawing {
     let ry2 = this.randomNumber(-height, height)
     let ry3 = this.randomNumber(-height, height)
     let rc = this.relatedRandomColor(color)
-    // let rc = this.randomColor()
     let rf = this.randomNumber(0, 1000) / 2000
     let points = `${rx1},${ry1} ${rx2},${ry2} ${rx3},${ry3}`
 
@@ -128,7 +127,6 @@ export default class Drawing {
     let ry1 = this.randomNumber(-height, height)
     let ry2 = this.randomNumber(-height, height)
     let rc = this.relatedRandomColor(color)
-    // let rc = this.randomColor()
     let rf = this.randomNumber(0, 1000) / 2000
 
     this.draw.rect(Math.abs(rx2-rx1), Math.abs(ry2-ry1)).cx(rx1).cy(ry1).attr({
