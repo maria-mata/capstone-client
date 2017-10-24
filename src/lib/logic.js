@@ -7,8 +7,8 @@ export default class Drawing {
   }
   drawSvg(color) {
     const numberOfShapes = 100
-    const width = 800
-    const height = 400
+    const width = 1000
+    const height = 500
 
     this.drawContainer(width, height)
     this.drawFirstRectangle(width, height, color)
@@ -129,7 +129,8 @@ export default class Drawing {
     let rc = this.relatedRandomColor(color)
     let rf = this.randomNumber(0, 1000) / 2000
 
-    this.draw.rect(Math.abs(rx2-rx1), Math.abs(ry2-ry1)).cx(rx1).cy(ry1).attr({
+    this.draw.rect(Math.abs(rx2-rx1), Math.abs(ry2-ry1)).cx(rx1).cy(ry1)
+    .attr({
       fill: rc,
       opacity: rf
     })
