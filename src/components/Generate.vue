@@ -27,8 +27,11 @@ export default {
     }
   },
   methods: {
-    createImage() {
+    analyzeTone() {
+      // POST to server, then server to API and back
       this.textInput = ''
+    },
+    createImage() {
       const art = new Drawing()
       art.drawSvg('all')
     }
