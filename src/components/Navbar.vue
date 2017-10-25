@@ -2,9 +2,9 @@
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="container">
       <div class="navbar-brand">
-        <a class="navbar-item">
+        <router-link to="/" class="navbar-item">
           <img src="../assets/moodpix-logo.png" alt="Moodpix" width="112" height="28">
-        </a>
+        </router-link>
         <button class="button navbar-burger" :class="{ 'is-active': mobile }"
         @click="toggleBurger">
           <span></span>
@@ -14,9 +14,9 @@
       </div>
       <div class="navbar-menu" :class="{ 'is-active': mobile }">
         <div class="navbar-end">
-          <a class="navbar-item" @click="toggleBurger">Sign In</a>
-          <a class="navbar-item" @click="toggleBurger">Sign Up</a>
-          <!-- <a class="navbar-item" @click="toggleBurger">Saved</a>
+          <router-link to="/signin" class="navbar-item" @click="toggleBurger">Sign In</router-link>
+          <router-link to="/signup" class="navbar-item" @click="toggleBurger">Sign Up</router-link>
+          <!-- <router-link to="/saved" class="navbar-item" @click="toggleBurger">Saved</router-link>
           <div class="navbar-item">
             <a class="button is-dark" @click="toggleBurger">Logout</a>
           </div> -->

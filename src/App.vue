@@ -29,4 +29,20 @@ export default {
 .main {
   flex: 1;
 }
+
+@media (min-width: 768px) {
+  .box {
+    width: 75vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .box {
+    width: 50vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 </style>
