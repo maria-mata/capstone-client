@@ -24,9 +24,9 @@
             <div class="control">
               <button class="button is-primary">Submit</button>
             </div>
-            <div class="control">
-              <button type="submit" class="button is-link">Cancel</button>
-            </div>
+            <!-- <div class="control">
+              <button class="button is-link">Cancel</button>
+            </div> -->
           </div>
         </form>
       </div>
