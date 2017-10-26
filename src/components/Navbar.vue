@@ -18,7 +18,7 @@
           <router-link to="/signup" v-if="!isSignedIn" class="navbar-item" @click="toggleBurger">Sign Up</router-link>
           <router-link to="/saved" v-if="isSignedIn" class="navbar-item" @click="toggleBurger">Saved</router-link>
           <div v-if="isSignedIn" class="navbar-item">
-            <a class="button is-dark" @click="toggleBurger">Logout</a>
+            <a class="button is-dark" @click="toggleBurger, logout">Logout</a>
           </div>
         </div>
       </div>
@@ -42,6 +42,10 @@ export default {
   methods: {
     toggleBurger() {
       this.mobile = !this.mobile
+    },
+    logout() {
+      localStorage.removeItem('token')
+      location.href = '/'
     }
   }
 }
