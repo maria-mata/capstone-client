@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import Drawing from '../lib/logic.js'
+// import Drawing from '../lib/logic.js'
 
 export default {
   name: 'generate',
@@ -26,14 +26,11 @@ export default {
       textInput: ''
     }
   },
+  props: ['createImage'],
   methods: {
     analyzeTone() {
       // POST to server, then server to API and back
       this.textInput = ''
-    },
-    createImage() {
-      const art = new Drawing()
-      art.drawSvg('all')
     }
   }
 }

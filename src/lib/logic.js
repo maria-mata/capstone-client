@@ -5,6 +5,10 @@ export default class Drawing {
     this.draw = SVG('drawing')
     this.nested = this.draw.nested()
   }
+  exportSvg() {
+    const file = this.draw.svg()
+    return file
+  }
   drawSvg(color) {
     const numberOfShapes = 100
     const width = 1000
