@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-image">
         <figure class="image is-2by1">
-          <img :src="'data:image/svg+xml;utf8,' + image.url" alt="Placeholder image">
+          <img :src="image.url" alt="Placeholder image">
         </figure>
       </div>
       <div class="card-content">
