@@ -10,7 +10,7 @@
 <script>
 import Generate from './Generate'
 import Artboard from './Artboard'
-import Drawing from '../lib/logic.js'
+import Drawing from '../lib/drawing.js'
 
 export default {
   name: 'Home',
@@ -31,6 +31,9 @@ export default {
   },
   methods: {
     createImage() {
+      if (this.art !== '') {
+        this.art.clear()
+      }
       this.art = new Drawing()
       this.art.drawSvg('all')
     },

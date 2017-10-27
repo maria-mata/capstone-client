@@ -5,6 +5,9 @@ export default class Drawing {
     this.draw = SVG('drawing')
     this.nested = this.draw.nested()
   }
+  clear() {
+    return this.draw.clear()
+  }
   exportSvg() {
     const file = this.draw.svg()
     return file
