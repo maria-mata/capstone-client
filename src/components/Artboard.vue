@@ -4,6 +4,7 @@
       <div class="content has-text-centered">
         <a class="button is-dark" :href="svgDownloadPath" download="image.svg">Download SVG</a>
         <!-- <a class="button is-dark" :href="pngDownloadPath" download="image.png">Download PNG</a> -->
+        <a class="button is-danger" @click.prevent="saveImage">Save Image</a>
       </div>
       <figure class="image is-2by1">
         <img :src="svgDownloadPath">
@@ -16,8 +17,32 @@
 </template>
 
 <script>
+const url = 'https://moodpix.herokuapp.com'
+// const url = 'http://localhost:5000'
+
 export default {
   name: 'artboard',
-  props: ['svgDownloadPath']
+  props: ['svgDownloadPath'],
+  methods: {
+    saveImage() {
+      const settings = {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          url: this.svgDownloadPath,
+          name: 'test.svg', // need to change later
+          description: 'I love to sing!' // need to change later
+        })
+      }
+      fetch(`${url}/images/1`, settings) // need to change id later
+      .then(response => response.json())
+      .then(response => {
+        console.log(response)
+      })
+    }
+  }
 }
 </script>

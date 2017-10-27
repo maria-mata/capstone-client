@@ -9,8 +9,7 @@ export default class Drawing {
     return this.draw.clear()
   }
   exportSvg() {
-    const file = this.draw.svg()
-    return file
+    return this.draw.svg()
   }
   drawSvg(color) {
     const numberOfShapes = 100

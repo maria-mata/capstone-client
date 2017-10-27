@@ -36,7 +36,8 @@ export default {
       }
       this.art = new Drawing()
       this.art.drawSvg('all')
-    },
+      // localStorage.setItem('image', 'data:image/svg+xml;utf8,' + this.art.exportSvg())
+    }
   }
 }
 </script>
