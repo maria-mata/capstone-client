@@ -2,7 +2,7 @@
   <section class="hero is-dark">
     <div class="hero-body">
       <div class="container">
-        <form class="content has-text-centered" @submit.prevent="createImage">
+        <form class="content has-text-centered" @submit.prevent="analyzeTone">
           <div class="field">
             <label class="label has-text-white">Enter a word or phrase</label>
             <div class="control">
@@ -17,7 +17,8 @@
 </template>
 
 <script>
-// import Drawing from '../lib/logic.js'
+const url = 'https://moodpix.herokuapp.com'
+// const url = 'http://localhost:5000'
 
 export default {
   name: 'generate',
@@ -29,7 +30,21 @@ export default {
   props: ['createImage'],
   methods: {
     analyzeTone() {
-      // POST to server, then server to API and back
+      const settings = {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          text: this.textInput
+        })
+      }
+      fetch(`${url}/mood`, settings)
+      .then(response => response.json())
+      .then(response => {
+        console.log(response)
+      })
       this.textInput = ''
     }
   }
