@@ -2,7 +2,7 @@
   <section class="hero is-dark">
     <div class="hero-body">
       <div class="container">
-        <form class="content has-text-centered" @submit.prevent="analyzeTone">
+        <form class="content has-text-centered" @submit.prevent="createImage">
           <div class="field">
             <label class="label has-text-white">Enter a word or phrase</label>
             <div class="control">
