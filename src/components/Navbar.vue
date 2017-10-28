@@ -14,11 +14,11 @@
       </div>
       <div class="navbar-menu" :class="{ 'is-active': mobile }">
         <div class="navbar-end">
-          <router-link to="/signin" v-if="!isSignedIn" class="navbar-item" @click="toggleBurger">Sign In</router-link>
-          <router-link to="/signup" v-if="!isSignedIn" class="navbar-item" @click="toggleBurger">Sign Up</router-link>
-          <router-link to="/saved" v-if="isSignedIn" class="navbar-item" @click="toggleBurger">Saved</router-link>
+          <a @click="toggleBurger"><router-link to="/signin" v-if="!isSignedIn" class="navbar-item">Sign In</router-link></a>
+          <a @click="toggleBurger"><router-link to="/signup" v-if="!isSignedIn" class="navbar-item">Sign Up</router-link></a>
+          <a @click="toggleBurger"><router-link to="/saved" v-if="isSignedIn" class="navbar-item">Saved</router-link></a>
           <div v-if="isSignedIn" class="navbar-item">
-            <a class="button is-dark" @click="toggleBurger, logout">Logout</a>
+            <a class="button is-dark" @click="logout">Logout</a>
           </div>
         </div>
       </div>
@@ -44,6 +44,7 @@ export default {
       this.mobile = !this.mobile
     },
     logout() {
+      this.toggleBurger()
       localStorage.removeItem('token')
       location.href = '/'
     }

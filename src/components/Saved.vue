@@ -1,7 +1,7 @@
 <template>
   <section class="section">
     <div class="container">
-      <div class="columns is-multiline">
+      <div class="columns is-multiline is-mobile">
         <card v-for="image in savedImages" :image="image" key=""/>
       </div>
     </div>
@@ -25,9 +25,9 @@ export default {
     }
   },
   async mounted() {
-    const data = await fetch(`${url}/images/1`)
+    const token = localStorage.getItem('token')
+    const data = await fetch(`${url}/images/${token}`)
     const response = await data.json()
-    console.log(response);
     this.savedImages = response
   },
 }

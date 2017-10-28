@@ -74,8 +74,12 @@ export default {
       fetch(`${url}/signup`, settings)
       .then(response => response.json())
       .then(response => {
-        console.log(response)
-        location.href = '/'
+        if (response.error) {
+          console.log(response) // need to add form warnings
+        } else {
+          localStorage.setItem('token', response.token)
+          location.href = '/'
+        }
       })
     }
   }
