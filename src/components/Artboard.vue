@@ -4,11 +4,13 @@
       <div class="content has-text-centered">
         <a class="button is-dark" :href="svgDownloadPath" download="image.svg">Download SVG</a>
         <!-- <a class="button is-dark" :href="pngDownloadPath" download="image.png">Download PNG</a> -->
-        <a class="button is-danger" @click.prevent="saveImage">Save Image</a>
+        <a v-if="isSignedIn" class="button is-danger" @click.prevent="saveImage">Save Image</a>
       </div>
-      <figure class="image is-2by1">
-        <img :src="svgDownloadPath">
-      </figure>
+      <transition appear appear-active-class="animated fadeIn">
+        <figure v-if="svgDownloadPath != null" class="image is-2by1">
+          <img :src="svgDownloadPath">
+        </figure>
+      </transition>
       <div v-show="false" id="drawing" class="content has-text-centered">
         <!-- SVG art goes here -->
       </div>
@@ -22,7 +24,7 @@ const url = 'https://moodpix.herokuapp.com'
 
 export default {
   name: 'artboard',
-  props: ['svgDownloadPath'],
+  props: ['isSignedIn', 'svgDownloadPath', 'imgName'],
   methods: {
     saveImage() {
       const settings = {

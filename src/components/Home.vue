@@ -3,7 +3,7 @@
     <!-- Form Component -->
     <generate :createImage="createImage"/>
     <!-- Image Component -->
-    <artboard :svgDownloadPath="svgDownloadPath"/>
+    <artboard :isSignedIn="isSignedIn" :svgDownloadPath="svgDownloadPath" :imgName="imgName"/>
   </div>
 </template>
 
@@ -18,15 +18,16 @@ export default {
     Generate,
     Artboard
   },
+  props: ['isSignedIn'],
   data() {
     return {
-      art: ''
+      art: '',
+      imgName: '',
     }
   },
   computed: {
     svgDownloadPath() {
-      return this.art !== '' ? 'data:image/svg+xml;utf8,' + this.art.exportSvg()
-      : null
+      return localStorage.getItem('image') || null
     }
   },
   methods: {
@@ -36,7 +37,8 @@ export default {
       }
       this.art = new Drawing()
       this.art.drawSvg('all')
-      // localStorage.setItem('image', 'data:image/svg+xml;utf8,' + this.art.exportSvg())
+      localStorage.setItem('image', 'data:image/svg+xml;utf8,' + this.art.exportSvg())
+      location.reload()
     }
   }
 }

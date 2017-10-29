@@ -2,7 +2,7 @@
   <section class="hero is-dark">
     <div class="hero-body">
       <div class="container">
-        <form class="content has-text-centered" @submit.prevent="createImage">
+        <form class="content has-text-centered" @submit.prevent="analyzeTone">
           <div class="field">
             <label class="label has-text-white">Enter a word or phrase</label>
             <div class="control">
@@ -30,6 +30,7 @@ export default {
   props: ['createImage'],
   methods: {
     analyzeTone() {
+      this.createImage()
       const settings = {
         method: 'POST',
         headers: {
@@ -40,11 +41,11 @@ export default {
           text: this.textInput
         })
       }
-      fetch(`${url}/mood`, settings)
-      .then(response => response.json())
-      .then(response => {
-        console.log(response)
-      })
+      // fetch(`${url}/mood`, settings)
+      // .then(response => response.json())
+      // .then(response => {
+      //   console.log(response)
+      // })
       this.textInput = ''
     }
   }
