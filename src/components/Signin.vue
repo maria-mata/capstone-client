@@ -68,7 +68,7 @@ export default {
           console.log(response) // need to add form warnings
         } else {
           localStorage.setItem('token', response.token)
-          location.href = '/saved'
+          location.href = '/'
         }
       })
     }
