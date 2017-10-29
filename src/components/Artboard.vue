@@ -1,17 +1,16 @@
 <template>
   <section class="section">
     <div class="container">
-        <div class="content has-text-centered">
-          <transition appear appear-active-class="animated fadeIn">
-            <a class="button is-dark" v-if="svgDownloadPath != null"
-            :href="svgDownloadPath" download="image.svg">Download SVG</a>
-            <!-- <a class="button is-dark" :href="pngDownloadPath" download="image.png">Download PNG</a> -->
-            <a v-if="isSignedIn" class="button is-danger" @click.prevent="saveImage">Save Image</a>
-          </transition>
-        </div>
       <transition appear appear-active-class="animated fadeIn">
-        <figure v-if="svgDownloadPath != null" class="image is-2by1">
-          <img :src="svgDownloadPath">
+        <figure @mouseenter="showOverlay" @mouseleave="hideOverlay"
+        v-if="svgDownloadPath != null" class="image is-2by1">
+          <img :src="svgDownloadPath" :class="{ overlay: showDownloadButton }">
+          <div class="centered">
+            <a class="button is-dark overlay" v-if="showDownloadButton"
+            :href="svgDownloadPath" download="image.svg">Download SVG</a>
+            <a v-if="showSaveButton" class="button is-dark overlay"
+            @click.prevent="saveImage">Save Image</a>
+          </div>
         </figure>
       </transition>
       <div v-show="false" id="drawing" class="content has-text-centered">
@@ -28,7 +27,25 @@ const url = 'https://moodpix.herokuapp.com'
 export default {
   name: 'artboard',
   props: ['isSignedIn', 'svgDownloadPath', 'imgName'],
+  data() {
+    return {
+      showDownloadButton: false,
+      showSaveButton: false
+    }
+  },
   methods: {
+    showOverlay() {
+      if (this.svgDownloadPath != null) {
+        this.showDownloadButton = true
+      }
+      if (this.isSignedIn == true) {
+        this.showSaveButton = true
+      }
+    },
+    hideOverlay() {
+      this.showSaveButton = false
+      this.showDownloadButton = false
+    },
     saveImage() {
       const settings = {
         method: 'POST',
@@ -51,3 +68,16 @@ export default {
   }
 }
 </script>
+
+<style>
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .overlay {
+    opacity: 0.8;
+  }
+</style>
