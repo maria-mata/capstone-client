@@ -3,12 +3,12 @@
     <div class="container">
       <transition appear appear-active-class="animated fadeIn">
         <figure @mouseenter="showOverlay" @mouseleave="hideOverlay"
-        v-if="svgDownloadPath != null" class="image is-2by1">
+        v-if="svgDownloadPath" class="image is-2by1">
           <img :src="svgDownloadPath" :class="{ overlay: showDownloadButton }">
           <div class="centered">
-            <a class="button is-dark overlay" v-if="showDownloadButton"
+            <a class="button is-large is-dark is-outlined" v-if="showDownloadButton"
             :href="svgDownloadPath" download="image.svg">Download SVG</a>
-            <a v-if="showSaveButton" class="button is-dark overlay"
+            <a v-if="showSaveButton" class="button is-large is-dark is-outlined"
             @click.prevent="saveImage">Save Image</a>
           </div>
         </figure>
@@ -30,7 +30,8 @@ export default {
   data() {
     return {
       showDownloadButton: false,
-      showSaveButton: false
+      showSaveButton: false,
+      showTooltip: false
     }
   },
   methods: {
@@ -47,6 +48,7 @@ export default {
       this.showDownloadButton = false
     },
     saveImage() {
+      const token = localStorage.getItem('token')
       const settings = {
         method: 'POST',
         headers: {
@@ -55,14 +57,15 @@ export default {
         },
         body: JSON.stringify({
           url: this.svgDownloadPath,
-          name: 'test.svg', // need to change later
-          description: 'I love to sing!' // need to change later
+          name: 'unicorn.svg', // need to change later
+          description: 'Purple unicorns with glitter.' // need to change later
         })
       }
-      fetch(`${url}/images/1`, settings) // need to change id later
+      fetch(`${url}/images/${token}`, settings)
       .then(response => response.json())
       .then(response => {
         console.log(response)
+        location.href = '/saved'
       })
     }
   }

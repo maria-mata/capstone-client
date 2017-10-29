@@ -1,5 +1,5 @@
 <template>
-  <div class="column is-half-mobile is-half-tablet is-one-quarter-desktop">
+  <div class="column is-one-quarter-desktop">
     <transition appear appear-active-class="animated fadeIn">
       <div class="card">
         <div class="card-image">

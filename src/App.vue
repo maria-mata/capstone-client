@@ -35,11 +35,21 @@ export default {
   flex: 1;
 }
 
+@media (min-width: 320px) {
+  .card {
+    height: 40vh;
+    overflow: scroll;
+  }
+}
+
 @media (min-width: 768px) {
   .box {
     width: 75vw;
     margin-left: auto;
     margin-right: auto;
+  }
+  .card {
+    height: 45vh;
   }
 }
 
@@ -48,6 +58,9 @@ export default {
     width: 50vw;
     margin-left: auto;
     margin-right: auto;
+  }
+  .card {
+    height: 35vh;
   }
 }
 </style>
