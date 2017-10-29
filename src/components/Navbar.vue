@@ -29,14 +29,10 @@
 <script>
 export default {
   name: 'navbar',
+  props: ['isSignedIn'],
   data() {
     return {
       mobile: false
-    }
-  },
-  computed: {
-    isSignedIn() {
-      return localStorage.getItem('token') ? true : false
     }
   },
   methods: {

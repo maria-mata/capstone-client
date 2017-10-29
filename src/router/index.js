@@ -28,7 +28,8 @@ export default new Router({
     {
       path: '/saved',
       name: 'Saved',
-      component: Saved
+      component: Saved,
+      props: true
     }
   ]
 })

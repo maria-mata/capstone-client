@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <navbar/>
-    <router-view class="main"/>
+    <navbar :isSignedIn="isSignedIn"/>
+    <router-view :isSignedIn="isSignedIn" class="main"/>
     <foot/>
   </div>
 </template>
@@ -15,7 +15,12 @@ export default {
   components: {
     Navbar,
     Foot
-  }
+  },
+  computed: {
+    isSignedIn() {
+      return localStorage.getItem('token') ? true : false
+    }
+  },
 }
 </script>
 

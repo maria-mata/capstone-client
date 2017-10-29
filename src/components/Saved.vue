@@ -16,6 +16,7 @@ const url = 'https://moodpix.herokuapp.com'
 
 export default {
   name: 'saved',
+  props: ['isSignedIn'],
   components: {
     Card
   },
