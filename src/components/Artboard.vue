@@ -1,11 +1,14 @@
 <template>
   <section class="section">
     <div class="container">
-      <div class="content has-text-centered">
-        <a class="button is-dark" :href="svgDownloadPath" download="image.svg">Download SVG</a>
-        <!-- <a class="button is-dark" :href="pngDownloadPath" download="image.png">Download PNG</a> -->
-        <a v-if="isSignedIn" class="button is-danger" @click.prevent="saveImage">Save Image</a>
-      </div>
+        <div class="content has-text-centered">
+          <transition appear appear-active-class="animated fadeIn">
+            <a class="button is-dark" v-if="svgDownloadPath != null"
+            :href="svgDownloadPath" download="image.svg">Download SVG</a>
+            <!-- <a class="button is-dark" :href="pngDownloadPath" download="image.png">Download PNG</a> -->
+            <a v-if="isSignedIn" class="button is-danger" @click.prevent="saveImage">Save Image</a>
+          </transition>
+        </div>
       <transition appear appear-active-class="animated fadeIn">
         <figure v-if="svgDownloadPath != null" class="image is-2by1">
           <img :src="svgDownloadPath">
