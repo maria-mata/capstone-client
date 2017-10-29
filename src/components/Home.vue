@@ -31,12 +31,12 @@ export default {
     }
   },
   methods: {
-    createImage() {
+    createImage(color1, color2) {
       if (this.art !== '') {
         this.art.clear()
       }
       this.art = new Drawing()
-      this.art.drawSvg('all')
+      this.art.drawSvg(color1, color2)
       localStorage.setItem('image', 'data:image/svg+xml;utf8,' + this.art.exportSvg())
       location.reload()
     }

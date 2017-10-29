@@ -30,7 +30,7 @@ export default {
   props: ['createImage'],
   methods: {
     analyzeTone() {
-      this.createImage()
+      this.createImage('yellow', 'magenta')
       const settings = {
         method: 'POST',
         headers: {

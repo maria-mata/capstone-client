@@ -11,16 +11,16 @@ export default class Drawing {
   exportSvg() {
     return this.draw.svg()
   }
-  drawSvg(color) {
+  drawSvg(color1, color2) {
     const numberOfShapes = 100
     const width = 1000
     const height = 500
 
     this.drawContainer(width, height)
-    this.drawFirstRectangle(width, height, color)
+    this.drawFirstRectangle(width, height, color1)
 
     for (var i = 0; i < numberOfShapes; i++) {
-      this.drawShapes(width, height, color)
+      this.drawShapes(width, height, color1, color2)
     }
   }
   drawContainer(width, height) {
@@ -73,10 +73,10 @@ export default class Drawing {
         rr += 128
         rb += 128
         break;
-      case 'grey' :
-        rr += 64
-        rg += 64
-        rb += 64
+      case 'black' :
+        rr -= 64
+        rg -= 64
+        rb -= 64
         break;
       case 'all' :
         return this.randomColor()
@@ -93,11 +93,11 @@ export default class Drawing {
     var hex = c.toString(16);
     return hex.length == 1 ? "0" + hex : hex;
   }
-  drawShapes(width, height, color) {
+  drawShapes(width, height, color1, color2) {
     let randomNumber = this.randomNumber(0, 5)
-    randomNumber < 3 ? this.drawCircle(width, height, color) :
-    randomNumber < 5 ? this.drawTriangle(width, height, color) :
-    this.drawRectangle(width, height, color)
+    randomNumber < 3 ? this.drawCircle(width, height, color1) :
+    randomNumber < 5 ? this.drawTriangle(width, height, color2) :
+    this.drawRectangle(width, height, color1)
   }
   drawCircle(width, height, color) {
     let rx = this.randomNumber(-width, width)
