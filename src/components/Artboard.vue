@@ -72,7 +72,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .centered {
     position: absolute;
     top: 50%;

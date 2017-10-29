@@ -30,6 +30,6 @@ export default {
     const data = await fetch(`${url}/images/${token}`)
     const response = await data.json()
     this.savedImages = response
-  },
+  }
 }
 </script>
