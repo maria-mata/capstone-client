@@ -14,9 +14,15 @@
       </div>
       <div class="navbar-menu" :class="{ 'is-active': mobile }">
         <div class="navbar-end">
-          <a @click="toggleBurger"><router-link to="/signin" v-if="!isSignedIn" class="navbar-item">Sign In</router-link></a>
-          <a @click="toggleBurger"><router-link to="/signup" v-if="!isSignedIn" class="navbar-item">Sign Up</router-link></a>
-          <a @click="toggleBurger"><router-link to="/saved" v-if="isSignedIn" class="navbar-item">Saved</router-link></a>
+          <router-link to="/signin" v-if="!isSignedIn" class="navbar-item">
+            <span @click="toggleBurger">Sign In</span>
+          </router-link>
+          <router-link to="/signup" v-if="!isSignedIn" class="navbar-item">
+            <span @click="toggleBurger">Sign Up</span>
+          </router-link>
+          <router-link to="/saved" v-if="isSignedIn" class="navbar-item">
+            <span @click="toggleBurger">Saved</span>
+          </router-link>
           <div v-if="isSignedIn" class="navbar-item">
             <a class="button is-dark" @click="logout">Logout</a>
           </div>
