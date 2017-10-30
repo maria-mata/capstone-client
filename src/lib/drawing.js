@@ -73,6 +73,11 @@ export default class Drawing {
         rr += 128
         rb += 128
         break;
+      case 'grey' :
+        rr +=  64
+        rg = rr
+        rb = rr
+        break;
       case 'black' :
         rr -= 64
         rg -= 64
