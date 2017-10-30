@@ -32,7 +32,7 @@ const url = 'https://moodpix.herokuapp.com'
 
 export default {
   name: 'artboard',
-  props: ['isSignedIn', 'svgDownloadPath', 'imgName'],
+  props: ['isSignedIn', 'svgDownloadPath'],
   data() {
     return {
       showDownloadButton: false,
@@ -74,7 +74,6 @@ export default {
       fetch(`${url}/images/${token}`, settings)
       .then(response => response.json())
       .then(response => {
-        console.log(response)
         location.href = '/saved'
       })
     }

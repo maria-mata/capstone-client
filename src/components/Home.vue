@@ -3,7 +3,7 @@
     <!-- Form Component -->
     <generate :createImage="createImage"/>
     <!-- Image Component -->
-    <artboard :isSignedIn="isSignedIn" :svgDownloadPath="svgDownloadPath" :imgName="imgName"/>
+    <artboard :isSignedIn="isSignedIn" :svgDownloadPath="svgDownloadPath"/>
   </div>
 </template>
 
@@ -21,8 +21,7 @@ export default {
   props: ['isSignedIn'],
   data() {
     return {
-      art: '',
-      imgName: '',
+      art: ''
     }
   },
   computed: {
