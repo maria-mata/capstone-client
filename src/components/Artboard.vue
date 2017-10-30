@@ -2,6 +2,12 @@
   <section class="section">
     <div class="container">
       <transition appear appear-active-class="animated fadeIn">
+        <h2 v-if="svgDownloadPath" class="title">Your Art</h2>
+      </transition>
+      <transition appear appear-active-class="animated fadeIn">
+        <h3 v-if="svgDownloadPath" class="subtitle"><strong>Your Input:</strong> {{ description }}</h3>
+      </transition>
+      <transition appear appear-active-class="animated fadeIn">
         <figure @mouseenter="showOverlay" @mouseleave="hideOverlay"
         v-if="svgDownloadPath" class="image is-2by1">
           <img :src="svgDownloadPath" :class="{ overlay: showDownloadButton }">
@@ -30,13 +36,17 @@ export default {
   data() {
     return {
       showDownloadButton: false,
-      showSaveButton: false,
-      showTooltip: false
+      showSaveButton: false
+    }
+  },
+  computed: {
+    description() {
+      return localStorage.getItem('description')
     }
   },
   methods: {
     showOverlay() {
-      if (this.svgDownloadPath != null) {
+      if (this.svgDownloadPath) {
         this.showDownloadButton = true
       }
       if (this.isSignedIn == true) {
@@ -57,8 +67,8 @@ export default {
         },
         body: JSON.stringify({
           url: this.svgDownloadPath,
-          name: 'unicorn.svg', // need to change later
-          description: 'Purple unicorns with glitter.' // need to change later
+          name: 'image2.svg', // need to change later
+          description: this.description()
         })
       }
       fetch(`${url}/images/${token}`, settings)

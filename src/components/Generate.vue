@@ -30,6 +30,7 @@ export default {
   props: ['createImage'],
   methods: {
     analyzeTone() {
+      localStorage.setItem('description', this.textInput)
       const settings = {
         method: 'POST',
         headers: {
