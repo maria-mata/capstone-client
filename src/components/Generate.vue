@@ -30,7 +30,6 @@ export default {
   props: ['createImage'],
   methods: {
     analyzeTone() {
-      this.createImage('yellow', 'magenta')
       const settings = {
         method: 'POST',
         headers: {
@@ -41,12 +40,53 @@ export default {
           text: this.textInput
         })
       }
-      // fetch(`${url}/mood`, settings)
-      // .then(response => response.json())
-      // .then(response => {
-      //   console.log(response)
-      // })
-      this.textInput = ''
+      fetch(`${url}/mood`, settings)
+      .then(response => response.json())
+      .then(response => {
+        const data = JSON.parse(response)
+        const tones = data['document_tone']['tones']
+        const colors = this.toneColors(tones)
+        this.createImage(colors[0], colors[1])
+      })
+    },
+    toneColors(tones) {
+      if (tones.length == 0) {
+        return ['all', 'all']
+      } else {
+        const highest = tones.sort((a, b) => {
+          return a.score - b.score
+        }).shift()
+        return this.parseTone(highest.tone_id)
+      }
+    },
+    parseTone(tone) {
+      let colors
+      switch(tone) {
+        case 'anger':
+          colors = ['red', 'black']
+          break;
+        case 'fear':
+          colors = ['blue', 'black']
+          break;
+        case 'joy':
+          colors = ['orange', 'magenta']
+          break;
+        case 'sadness':
+          colors = ['blue', 'black']
+          break;
+        case 'analytical':
+          colors = ['cyan', 'green']
+          break;
+        case 'confident':
+          colors = ['violet', 'black']
+          break;
+        case 'tentative':
+          colors = ['yellow', 'black']
+          break;
+        default:
+          colors = ['all', 'all']
+      }
+      return colors
     }
   }
 }
