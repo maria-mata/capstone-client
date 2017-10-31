@@ -36,8 +36,8 @@ export default {
 }
 
 @media (min-width: 320px) {
-  .card {
-    height: 40vh;
+  .card-content {
+    height: 15vh;
     overflow: scroll;
   }
 }
@@ -48,8 +48,8 @@ export default {
     margin-left: auto;
     margin-right: auto;
   }
-  .card {
-    height: 45vh;
+  .card-content {
+    height: 10vh;
   }
 }
 
@@ -59,8 +59,8 @@ export default {
     margin-left: auto;
     margin-right: auto;
   }
-  .card {
-    height: 35vh;
+  .card-content {
+    height: 15vh;
   }
 }
 </style>

@@ -11,6 +11,10 @@
           <p class="heading">{{ image.name }}</p>
           <div class="content">{{ image.description }}</div>
         </div>
+        <footer class="card-footer">
+          <a class="card-footer-item" :href="image.url" :download="image.name">Download</a>
+          <a class="card-footer-item" @click.prevent="deleteImage(image.id)">Delete</a>
+        </footer>
       </div>
     </transition>
   </div>
@@ -19,6 +23,12 @@
 <script>
 export default {
   name: 'card',
-  props: ['image']
+  props: ['image'],
+  methods: {
+    deleteImage(id) {
+      // need to create a delete route & post code
+      console.log(id);
+    }
+  }
 }
 </script>
