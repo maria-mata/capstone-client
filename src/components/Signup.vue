@@ -26,7 +26,7 @@
           </div>
           <div class="field is-grouped">
             <div class="control">
-              <button class="button is-primary">Submit</button>
+              <button class="button is-dark">Submit</button>
             </div>
           </div>
         </form>

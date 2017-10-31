@@ -3,7 +3,7 @@
     <div class="container">
       <div class="navbar-brand">
         <router-link to="/" class="navbar-item">
-          <img src="../assets/moodpix-logo.png" alt="Moodpix" width="112" height="28">
+          <img src="../assets/moodpix-logo.png" alt="Moodpix">
         </router-link>
         <button class="button navbar-burger" :class="{ 'is-active': mobile }"
         @click="toggleBurger">
@@ -14,15 +14,16 @@
       </div>
       <div class="navbar-menu" :class="{ 'is-active': mobile }">
         <div class="navbar-end">
-          <router-link to="/signin" v-if="!isSignedIn" class="navbar-item">
+          <router-link to="/signin" v-if="!isSignedIn" class="navbar-item is-size-5">
             <span @click="toggleBurger">Sign In</span>
           </router-link>
-          <router-link to="/signup" v-if="!isSignedIn" class="navbar-item">
+          <router-link to="/signup" v-if="!isSignedIn" class="navbar-item is-size-5">
             <span @click="toggleBurger">Sign Up</span>
           </router-link>
-          <router-link to="/saved" v-if="isSignedIn" class="navbar-item">
+          <router-link to="/saved" v-if="isSignedIn" class="navbar-item is-size-5">
             <span @click="toggleBurger">Saved</span>
           </router-link>
+          <!-- <a class="navbar-item is-size-5">Logout</a> -->
           <div v-if="isSignedIn" class="navbar-item">
             <a class="button is-dark" @click="logout">Logout</a>
           </div>
