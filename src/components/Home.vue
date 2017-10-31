@@ -25,8 +25,8 @@ export default {
   data() {
     return {
       art: '',
-      description: '', // the input from the form
-      tones: null, // the array of tones
+      description: '',
+      tones: null,
       showGenerate: true,
       showArtboard: false,
       svgDownloadPath: null
@@ -49,7 +49,7 @@ export default {
       .then(response => response.json())
       .then(response => {
         const data = JSON.parse(response)
-        this.tones = data['document_tone']['tones'] // it's not showing all the tones
+        this.tones = data['document_tone']['tones']
         const highest = this.tones.sort((a, b) => {
           return b.score - a.score
         })[0]

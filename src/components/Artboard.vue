@@ -3,7 +3,8 @@
     <div class="container">
       <h2 v-if="svgDownloadPath" class="title">Your Input</h2>
       <h3 v-if="svgDownloadPath" class="subtitle">{{ description }}</h3>
-      <!-- Tone tags based on the input -->
+
+      <!-- Tone tags -->
       <div v-if="svgDownloadPath" class="field is-grouped is-grouped-multiline">
         <div class="control" v-for="tone in tones">
           <div class="tags has-addons">
@@ -16,6 +17,7 @@
         </div>
       </div>
 
+      <!-- Art display -->
       <transition appear appear-active-class="animated fadeIn">
         <figure @mouseenter="showOverlay" @mouseleave="hideOverlay" class="image is-2by1"
         v-if="svgDownloadPath">
@@ -28,6 +30,7 @@
           </div>
         </figure>
       </transition>
+
       <div v-show="false" id="drawing" class="content has-text-centered">
         <!-- SVG art gets drawn here invisibly -->
       </div>
