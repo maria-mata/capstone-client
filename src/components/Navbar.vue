@@ -14,16 +14,15 @@
       </div>
       <div class="navbar-menu" :class="{ 'is-active': mobile }">
         <div class="navbar-end">
-          <router-link to="/signin" v-if="!isSignedIn" class="navbar-item is-size-5">
+          <router-link to="/signin" v-if="!isSignedIn" class="navbar-item">
             <span @click="toggleBurger">Sign In</span>
           </router-link>
-          <router-link to="/signup" v-if="!isSignedIn" class="navbar-item is-size-5">
+          <router-link to="/signup" v-if="!isSignedIn" class="navbar-item">
             <span @click="toggleBurger">Sign Up</span>
           </router-link>
-          <router-link to="/saved" v-if="isSignedIn" class="navbar-item is-size-5">
+          <router-link to="/saved" v-if="isSignedIn" class="navbar-item">
             <span @click="toggleBurger">Saved</span>
           </router-link>
-          <!-- <a class="navbar-item is-size-5">Logout</a> -->
           <div v-if="isSignedIn" class="navbar-item">
             <a class="button is-dark" @click="logout">Logout</a>
           </div>
@@ -54,3 +53,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .navbar, .navbar-item:hover {
+    background: rgba(255,255,255, 0.5);
+  }
+</style>

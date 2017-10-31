@@ -1,5 +1,5 @@
 <template>
-  <section class="hero is-light is-medium" id="generate">
+  <section class="hero" id="generate">
     <div class="hero-body">
       <div class="container">
         <div class="content has-text-centered">
@@ -34,7 +34,7 @@ export default {
     submitForm(input) {
       this.analyzeTone(input)
       this.textInput = ''
-      return jump('#artboard')
+      this.jump(550)
     }
   }
 }
@@ -46,10 +46,10 @@ export default {
   opacity: 0.6;
 }
 
-.hero.is-light {
+/*.hero.is-light {
   background: url('../assets/background.svg') no-repeat center center fixed;
   background-size: cover;
-}
+}*/
 
 @media (min-width: 768px) {
   .hero-body > .container {

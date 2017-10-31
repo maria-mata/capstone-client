@@ -32,3 +32,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  section.section {
+    background: rgba(255,255,255, 1);
+  }
+</style>

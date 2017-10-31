@@ -29,11 +29,18 @@ export default {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  background: url('./assets/background.svg') no-repeat center center fixed;
+  background-size: cover;
 }
 
 .main {
   flex: 1;
 }
+
+.box {
+  background: rgba(255,255,255, 0.8);
+}
+
 
 @media (min-width: 320px) {
   .card-content {

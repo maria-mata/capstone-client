@@ -1,5 +1,5 @@
 <template>
-  <section class="section" id="artboard">
+  <section class="section">
     <div class="container">
       <div class="content">
         <transition appear appear-active-class="animated fadeIn">
@@ -96,5 +96,9 @@ export default {
 
   .overlay {
     opacity: 0.8;
+  }
+
+  section.section {
+    background: rgba(255,255,255, 1);
   }
 </style>

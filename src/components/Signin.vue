@@ -1,5 +1,5 @@
 <template>
-  <section class="section">
+  <section class="hero section">
     <div class="container">
       <div class="box">
         <h2 class="title">Sign In</h2>
