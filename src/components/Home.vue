@@ -3,7 +3,7 @@
     <!-- Form Component (Input)-->
     <generate :analyzeTone="analyzeTone"/>
     <!-- Image Component (Output)-->
-    <artboard v-if="showArtboard" :isSignedIn="isSignedIn" :svgDownloadPath="svgDownloadPath"
+    <artboard v-show="showArtboard" :isSignedIn="isSignedIn" :svgDownloadPath="svgDownloadPath"
     :saveImage="saveImage" :description="description" :tones="tones"/>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <section v-if="svgDownloadPath" class="section" id="artboard">
+  <section class="section" id="artboard">
     <div class="container">
       <div class="content">
         <transition appear appear-active-class="animated fadeIn">
@@ -26,11 +26,8 @@
             </div>
           </div>
           <div class="level-right">
-            <a class="button is-dark" @click.prevent="jump('#generate')">
-              <span class="icon">
-                <i class="fa fa-angle-up"></i>
-              </span>
-              <span>Back to Top</span>
+            <a class="is-size-5" @click.prevent="jump('#generate')">
+              Back to Top
             </a>
           </div>
         </div>

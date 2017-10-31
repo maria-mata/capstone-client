@@ -1,5 +1,5 @@
 <template>
-  <section class="hero is-light" id="generate">
+  <section class="hero is-light is-medium" id="generate">
     <div class="hero-body">
       <div class="container">
         <div class="content has-text-centered">
@@ -34,7 +34,7 @@ export default {
     submitForm(input) {
       this.analyzeTone(input)
       this.textInput = ''
-      jump('#artboard')
+      return jump('#artboard')
     }
   }
 }
