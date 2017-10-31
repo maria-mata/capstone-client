@@ -49,10 +49,10 @@ export default {
       .then(response => response.json())
       .then(response => {
         const data = JSON.parse(response)
-        this.tones = data['document_tone']['tones']
+        this.tones = data['document_tone']['tones'] // it's not showing all the tones
         const highest = this.tones.sort((a, b) => {
-          return a.score - b.score
-        }).pop()
+          return b.score - a.score
+        })[0]
         const colors = this.parseTone(highest.tone_id)
 
         this.tones.length == 0 ? this.createImage('all', 'all') :

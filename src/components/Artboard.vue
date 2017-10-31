@@ -1,32 +1,24 @@
 <template>
   <section class="section">
     <div class="container">
-      <transition appear appear-active-class="animated fadeIn">
-        <h2 v-if="svgDownloadPath" class="title">Your Input</h2>
-      </transition>
-
-      <transition appear appear-active-class="animated fadeIn">
-        <h3 v-if="svgDownloadPath" class="subtitle">{{ description }}</h3>
-      </transition>
+      <h2 v-if="svgDownloadPath" class="title">Your Input</h2>
+      <h3 v-if="svgDownloadPath" class="subtitle">{{ description }}</h3>
       <!-- Tone tags based on the input -->
-      <transition appear appear-active-class="animated fadeIn">
-        <div class="field is-grouped is-grouped-multiline"
-        v-for="tone in tones">
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-medium" :class="{ 'is-danger': tone.tone_id == 'anger',
-              'is-warning': tone.tone_id == 'joy', 'is-info': tone.tone_id == 'sadness',
-              'is-success': tone.tone_id == 'analytical', 'is-primary': tone.tone_id == 'confident',
-              'is-light': tone.tone_id == 'tentative'}">{{ tone.tone_name }}</span>
-              <span class="tag is-medium is-dark">{{ percentage(tone.score) }}%</span>
-            </div>
+      <div v-if="svgDownloadPath" class="field is-grouped is-grouped-multiline">
+        <div class="control" v-for="tone in tones">
+          <div class="tags has-addons">
+            <span class="tag is-medium" :class="{ 'is-danger': tone.tone_id == 'anger',
+            'is-warning': tone.tone_id == 'joy', 'is-info': tone.tone_id == 'sadness',
+            'is-success': tone.tone_id == 'analytical', 'is-primary': tone.tone_id == 'confident',
+            'is-light': tone.tone_id == 'tentative'}">{{ tone.tone_name }}</span>
+            <span class="tag is-medium is-dark">{{ percentage(tone.score) }}%</span>
           </div>
         </div>
-      </transition>
+      </div>
 
       <transition appear appear-active-class="animated fadeIn">
-        <figure @mouseenter="showOverlay" @mouseleave="hideOverlay"
-        v-if="svgDownloadPath" class="image is-2by1">
+        <figure @mouseenter="showOverlay" @mouseleave="hideOverlay" class="image is-2by1"
+        v-if="svgDownloadPath">
           <img :src="svgDownloadPath" :class="{ overlay: showDownloadButton }">
           <div class="centered">
             <a class="button is-large is-dark is-outlined" v-if="showDownloadButton"
