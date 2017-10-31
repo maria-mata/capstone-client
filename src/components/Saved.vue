@@ -1,6 +1,7 @@
 <template>
   <section class="section">
     <div class="container">
+      <h2 class="title">Saved Images</h2>
       <div class="columns is-multiline">
         <card v-for="image in savedImages" :image="image" key=""/>
       </div>

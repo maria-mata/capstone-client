@@ -41,6 +41,9 @@ export default {
   background: rgba(255,255,255, 0.8);
 }
 
+h2.title {
+  font-family: 'Lora', serif;
+}
 
 @media (min-width: 320px) {
   .card-content {

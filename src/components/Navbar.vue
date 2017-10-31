@@ -23,9 +23,7 @@
           <router-link to="/saved" v-if="isSignedIn" class="navbar-item">
             <span @click="toggleBurger">Saved</span>
           </router-link>
-          <div v-if="isSignedIn" class="navbar-item">
-            <a class="button is-dark" @click="logout">Logout</a>
-          </div>
+          <a v-if="isSignedIn" class="navbar-item" @click="logout">Logout</a>
         </div>
       </div>
     </div>
