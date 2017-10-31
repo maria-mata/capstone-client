@@ -1,9 +1,9 @@
 <template>
   <div>
     <!-- Form Component -->
-    <generate v-if="showGenerate" :analyzeTone="analyzeTone"/>
+    <generate :analyzeTone="analyzeTone"/>
     <!-- Image Component -->
-    <artboard v-if="showArtboard" :isSignedIn="isSignedIn" :svgDownloadPath="svgDownloadPath"
+    <artboard :isSignedIn="isSignedIn" :svgDownloadPath="svgDownloadPath"
     :saveImage="saveImage" :description="description" :tones="tones"/>
   </div>
 </template>
@@ -26,7 +26,7 @@ export default {
     return {
       art: '',
       description: '', // the input from the form
-      tones: [{'tone_id': 'anger', 'name': 'Anger', 'score': '0.89'}], // the array of tones
+      tones: [], // the array of tones
       showGenerate: true,
       showArtboard: false
     }
