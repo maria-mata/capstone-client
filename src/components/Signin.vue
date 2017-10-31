@@ -9,24 +9,19 @@
             <div class="control">
               <input v-model="signInForm.username" class="input" type="text" placeholder="Username">
             </div>
-            <!-- <p class="help is-success">This username is available</p> -->
-            <!-- <p class="help is-danger">This email is invalid</p> -->
+            <p v-if="error" class="help is-danger">{{ error }}</p>
           </div>
           <div class="field">
             <label class="label">Password</label>
             <div class="control">
               <input v-model="signInForm.password" class="input" type="password" placeholder="Password">
             </div>
-            <!-- <p class="help is-success">This username is available</p> -->
-            <!-- <p class="help is-danger">This email is invalid</p> -->
+            <p v-if="error" class="help is-danger">{{ error }}</p>
           </div>
           <div class="field is-grouped">
             <div class="control">
               <button class="button is-primary">Submit</button>
             </div>
-            <!-- <div class="control">
-              <button class="button is-link">Cancel</button>
-            </div> -->
           </div>
         </form>
       </div>
@@ -36,7 +31,6 @@
 
 <script>
 const url = 'https://moodpix.herokuapp.com'
-// const url = 'http://localhost:5000'
 
 export default {
   name: 'signin',
@@ -44,8 +38,9 @@ export default {
     return {
       signInForm: {
         username: '',
-        password: ''
-      }
+        password: '',
+      },
+      error: null
     }
   },
   methods: {
@@ -65,7 +60,7 @@ export default {
       .then(response => response.json())
       .then(response => {
         if (response.error) {
-          console.log(response) // need to add form warnings
+          this.error = response.error
         } else {
           localStorage.setItem('token', response.token)
           location.href = '/'
