@@ -48,7 +48,6 @@ export default {
     logout() {
       this.toggleBurger()
       localStorage.removeItem('token')
-      localStorage.removeItem('image')
       location.href = '/'
     }
   }

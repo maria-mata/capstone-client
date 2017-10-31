@@ -26,14 +26,10 @@ export default {
     return {
       art: '',
       description: '', // the input from the form
-      tones: [], // the array of tones
+      tones: null, // the array of tones
       showGenerate: true,
-      showArtboard: false
-    }
-  },
-  computed: {
-    svgDownloadPath() {
-      return localStorage.getItem('image') || null
+      showArtboard: false,
+      svgDownloadPath: null
     }
   },
   methods: {
@@ -54,21 +50,16 @@ export default {
       .then(response => {
         const data = JSON.parse(response)
         this.tones = data['document_tone']['tones']
-        const colors = this.toneColors(this.tones)
+        const highest = this.tones.sort((a, b) => {
+          return a.score - b.score
+        }).pop()
+        const colors = this.parseTone(highest.tone_id)
+
+        this.tones.length == 0 ? this.createImage('all', 'all') :
         this.createImage(colors[0], colors[1])
       })
       this.showGenerate = false
       this.showArtboard = true
-    },
-    toneColors(tones) {
-      if (tones.length == 0) {
-        return ['all', 'all']
-      } else {
-        const highest = tones.sort((a, b) => {
-          return a.score - b.score
-        }).shift()
-        return this.parseTone(highest.tone_id)
-      }
     },
     createImage(color1, color2) {
       if (this.art !== '') {
@@ -76,7 +67,7 @@ export default {
       }
       this.art = new Drawing()
       this.art.drawSvg(color1, color2)
-      localStorage.setItem('image', 'data:image/svg+xml;utf8,' + this.art.exportSvg())
+      this.svgDownloadPath = 'data:image/svg+xml;utf8,' + this.art.exportSvg()
     },
     parseTone(tone) {
       let colors
