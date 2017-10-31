@@ -1,9 +1,10 @@
 <template>
   <div>
     <!-- Form Component -->
-    <generate :analyzeTone="analyzeTone"/>
+    <generate v-if="showGenerate" :analyzeTone="analyzeTone"/>
     <!-- Image Component -->
-    <artboard :isSignedIn="isSignedIn" :svgDownloadPath="svgDownloadPath"/>
+    <artboard v-if="showArtboard" :isSignedIn="isSignedIn" :svgDownloadPath="svgDownloadPath"
+    :saveImage="saveImage" :description="description" :tones="tones"/>
   </div>
 </template>
 
@@ -25,7 +26,9 @@ export default {
     return {
       art: '',
       description: '', // the input from the form
-      tones: [] // the array of tones
+      tones: [{'tone_id': 'anger', 'name': 'Anger', 'score': '0.89'}], // the array of tones
+      showGenerate: true,
+      showArtboard: false
     }
   },
   computed: {
@@ -54,6 +57,8 @@ export default {
         const colors = this.toneColors(this.tones)
         this.createImage(colors[0], colors[1])
       })
+      this.showGenerate = false
+      this.showArtboard = true
     },
     toneColors(tones) {
       if (tones.length == 0) {
@@ -72,12 +77,12 @@ export default {
       this.art = new Drawing()
       this.art.drawSvg(color1, color2)
       localStorage.setItem('image', 'data:image/svg+xml;utf8,' + this.art.exportSvg())
-      location.reload()
     },
     parseTone(tone) {
+      let colors
       switch(tone) {
         case 'anger':
-          let colors = ['red', 'black']
+          colors = ['red', 'black']
           break;
         case 'fear':
           colors = ['blue', 'black']
@@ -101,6 +106,26 @@ export default {
           colors = ['all', 'all']
       }
       return colors
+    },
+    saveImage() {
+      const token = localStorage.getItem('token')
+      const settings = {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          url: this.svgDownloadPath,
+          name: 'image2.svg', // need to change later
+          description: this.description
+        })
+      }
+      fetch(`${url}/images/${token}`, settings)
+      .then(response => response.json())
+      .then(response => {
+        location.href = '/saved'
+      })
     }
   }
 }

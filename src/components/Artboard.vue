@@ -2,11 +2,17 @@
   <section class="section">
     <div class="container">
       <transition appear appear-active-class="animated fadeIn">
-        <h2 v-if="svgDownloadPath" class="title">Your Art</h2>
+        <h2 v-if="svgDownloadPath" class="title">Your Input</h2>
       </transition>
+
       <transition appear appear-active-class="animated fadeIn">
-        <h3 v-if="svgDownloadPath" class="subtitle"><strong>Your Input:</strong> {{ description }}</h3>
+        <h3 v-if="svgDownloadPath" class="subtitle">{{ description }}</h3>
       </transition>
+      <!-- Tone tags based on the input -->
+      <transition appear appear-active-class="animated fadeIn">
+        <tones :tones="tones"/>
+      </transition>
+
       <transition appear appear-active-class="animated fadeIn">
         <figure @mouseenter="showOverlay" @mouseleave="hideOverlay"
         v-if="svgDownloadPath" class="image is-2by1">
@@ -20,28 +26,25 @@
         </figure>
       </transition>
       <div v-show="false" id="drawing" class="content has-text-centered">
-        <!-- SVG art goes here -->
+        <!-- SVG art gets drawn here invisibly -->
       </div>
     </div>
   </section>
 </template>
 
 <script>
-const url = 'https://moodpix.herokuapp.com'
-// const url = 'http://localhost:5000'
+import Tones from './Tones'
 
 export default {
   name: 'artboard',
-  props: ['isSignedIn', 'svgDownloadPath'],
+  props: ['isSignedIn', 'svgDownloadPath', 'saveImage', 'description', 'tones'],
+  components: {
+    Tones
+  },
   data() {
     return {
       showDownloadButton: false,
       showSaveButton: false
-    }
-  },
-  computed: {
-    description() {
-      return localStorage.getItem('description')
     }
   },
   methods: {
@@ -56,26 +59,6 @@ export default {
     hideOverlay() {
       this.showSaveButton = false
       this.showDownloadButton = false
-    },
-    saveImage() {
-      const token = localStorage.getItem('token')
-      const settings = {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          url: this.svgDownloadPath,
-          name: 'image2.svg', // need to change later
-          description: this.description()
-        })
-      }
-      fetch(`${url}/images/${token}`, settings)
-      .then(response => response.json())
-      .then(response => {
-        location.href = '/saved'
-      })
     }
   }
 }
