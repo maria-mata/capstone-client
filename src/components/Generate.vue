@@ -1,15 +1,18 @@
 <template>
   <section class="hero is-dark">
     <div class="hero-body">
-      <div class="container">
+      <div class="container" style="width: 50vw; margin-left: auto; margin-right: auto;">
+        <div class="content has-text-centered">
+          <p class="heading is-size-4">Create Image</p>
+          <p class="title is-2">Enter a message &amp; <br>click to create a unique <br>abstract image</p>
+        </div>
         <form class="content has-text-centered" @submit.prevent="analyzeTone(textInput)">
           <div class="field">
-            <label class="label has-text-white">Enter a word or phrase</label>
-            <div class="control">
-              <input type="text" class="input has-text-centered" v-model="textInput">
-            </div>
+            <textarea class="textarea has-text-centered" rows="3" v-model="textInput"
+            style="width: 50vw; margin-left: auto; margin-right: auto;"></textarea>
           </div>
-          <button type="submit" class="button is-primary">Submit</button>
+          <br>
+          <button type="submit" class="button is-danger is-medium">Submit</button>
         </form>
       </div>
     </div>
@@ -27,3 +30,9 @@ export default {
   props: ['analyzeTone']
 }
 </script>
+
+<style scoped>
+.textarea {
+  font-size: 1.5em;
+}
+</style>

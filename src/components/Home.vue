@@ -1,9 +1,9 @@
 <template>
   <div>
     <!-- Form Component -->
-    <generate :analyzeTone="analyzeTone"/>
+    <generate v-if="showGenerate" :analyzeTone="analyzeTone"/>
     <!-- Image Component -->
-    <artboard :isSignedIn="isSignedIn" :svgDownloadPath="svgDownloadPath"
+    <artboard v-if="showArtboard" :isSignedIn="isSignedIn" :svgDownloadPath="svgDownloadPath"
     :saveImage="saveImage" :description="description" :tones="tones"/>
   </div>
 </template>
@@ -28,8 +28,12 @@ export default {
       description: '',
       tones: null,
       showGenerate: true,
-      showArtboard: false,
       svgDownloadPath: null
+    }
+  },
+  computed: {
+    showArtboard() {
+      return !this.showGenerate
     }
   },
   methods: {
@@ -59,7 +63,6 @@ export default {
         this.createImage(colors[0], colors[1])
       })
       this.showGenerate = false
-      this.showArtboard = true
     },
     createImage(color1, color2) {
       if (this.art !== '') {
