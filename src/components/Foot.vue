@@ -7,9 +7,9 @@
         <br>
         <p>Algorithmically generated abstract SVG art, influenced by sentiment analysis
           from the <a href="https://www.ibm.com/watson/services/tone-analyzer/" target="_blank">
-            IBM Watson Tone Analyzer</a>.</p>
+            IBM Watson Tone Analyzer</a></p>
         <br>
-        <p><i class="fa fa-copyright"></i> 2017 <a href="https://mjmata.com/" target="_blank">
+        <p>Made by <a href="https://mjmata.com/" target="_blank">
           María José Mata</a> //
           <a href="https://github.com/maria-mata/moodpix" target="_blank">
             <i class="fa fa-github"></i> Site Source
