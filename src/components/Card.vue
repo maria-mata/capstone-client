@@ -21,13 +21,30 @@
 </template>
 
 <script>
+const url = 'https://moodpix.herokuapp.com'
+
 export default {
   name: 'card',
   props: ['image'],
   methods: {
     deleteImage(id) {
-      // need to create a delete route & post code
-      console.log(id);
+      const token = localStorage.getItem('token')
+      const settings = {
+        method: 'DELETE',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      }
+      fetch(`${url}/images/${token}/${id}`, settings)
+      .then(response => response.json())
+      .then(response => {
+        if (response.error) {
+          console.log(response);
+        } else {
+          location.reload()
+        }
+      })
     }
   }
 }
