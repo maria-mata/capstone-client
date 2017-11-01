@@ -96,7 +96,7 @@ export default {
       }
       return colors
     },
-    saveImage() {
+    saveImage(imgName) {
       const token = localStorage.getItem('token')
       const settings = {
         method: 'POST',
@@ -106,7 +106,7 @@ export default {
         },
         body: JSON.stringify({
           url: this.svgDownloadPath,
-          name: 'image2.svg', // need to change later
+          name: imgName,
           description: this.description
         })
       }

@@ -41,11 +41,13 @@
             <a class="button is-large is-dark is-outlined" v-if="showDownloadButton"
             :href="svgDownloadPath" download="image.svg">Download</a>
             <a v-if="showSaveButton" class="button is-large is-dark is-outlined"
-            @click.prevent="saveImage">Save</a>
+            @click="isComponentModalActive = true">Save</a>
           </div>
         </figure>
       </transition>
-
+      <b-modal :active.sync="isComponentModalActive" has-modal-card>
+        <modal-form v-bind="name" :saveImage="saveImage"></modal-form>
+      </b-modal>
       <div v-show="false" id="drawing" class="content has-text-centered">
         <!-- SVG art gets drawn here invisibly -->
       </div>
@@ -55,15 +57,21 @@
 
 <script>
 import jump from 'jump.js'
+import ModalForm from '@/components/ModalForm'
 
 export default {
   name: 'artboard',
   props: ['isSignedIn', 'svgDownloadPath', 'saveImage', 'description', 'tones'],
+  components: {
+    ModalForm
+  },
   data() {
     return {
       showDownloadButton: false,
       showSaveButton: false,
-      jump: jump
+      jump: jump,
+      isComponentModalActive: false,
+      name: ''
     }
   },
   methods: {
