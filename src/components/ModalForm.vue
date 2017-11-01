@@ -16,7 +16,7 @@
       </section>
       <footer class="modal-card-foot">
         <button class="button" type="button" @click="$parent.close()">Close</button>
-        <button class="button is-dark" @click.prevent="saveImage(name)">Save</button>
+        <button class="button is-dark" @click.prevent="saveImage(name)" @click="$parent.close()">Save</button>
       </footer>
     </div>
   </form>

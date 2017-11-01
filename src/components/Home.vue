@@ -113,7 +113,7 @@ export default {
       fetch(`${url}/images/${token}`, settings)
       .then(response => response.json())
       .then(response => {
-        location.href = '/saved'
+        console.log(response);
       })
     }
   }
