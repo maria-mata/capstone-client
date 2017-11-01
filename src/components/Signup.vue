@@ -1,5 +1,5 @@
 <template>
-  <section class="hero section">
+  <section class="section">
     <div class="container">
       <transition appear appear-active-class="animated fadeIn">
         <div class="box">

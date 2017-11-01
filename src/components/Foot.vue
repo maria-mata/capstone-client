@@ -2,7 +2,20 @@
   <footer class="footer">
     <div class="container">
       <div class="content has-text-centered">
-        <p>Footer lorem ipsum and random links here.</p>
+        <img src="../assets/moodpix-logo.png" alt="moodpix-logo" width="200">
+        <br>
+        <br>
+        <p>Algorithmically generated abstract SVG art, influenced by sentiment analysis
+          from the <a href="https://www.ibm.com/watson/services/tone-analyzer/" target="_blank">
+            IBM Watson Tone Analyzer</a>.</p>
+        <br>
+        <p><i class="fa fa-copyright"></i> 2017 <a href="https://mjmata.com/" target="_blank">
+          María José Mata</a> //
+          <a href="https://github.com/maria-mata/moodpix" target="_blank">
+            <i class="fa fa-github"></i> Site Source
+          </a>
+        </p>
+
       </div>
     </div>
   </footer>
@@ -13,3 +26,13 @@ export default {
   name: 'foot'
 }
 </script>
+
+<style scoped>
+@media (min-width: 768px) {
+  .content > p {
+    width: 45vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+</style>
