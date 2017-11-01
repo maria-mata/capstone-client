@@ -1,5 +1,5 @@
 <template>
-  <section class="hero" id="generate">
+  <section class="hero">
     <div class="hero-body">
       <div class="container">
         <div class="content has-text-centered">

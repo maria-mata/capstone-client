@@ -26,7 +26,7 @@
             </div>
           </div>
           <div class="level-right">
-            <a class="is-size-5" @click.prevent="jump('#generate')">
+            <a class="is-size-5" @click.prevent="jump(-800)">
               Back to Top
             </a>
           </div>

@@ -53,7 +53,7 @@ export default {
 </script>
 
 <style scoped>
-  .navbar, .navbar-item:hover {
-    background: rgba(255,255,255, 0.5);
+  .navbar, .navbar-item:hover, .button.navbar-burger, .navbar-menu.is-active {
+    background: rgba(255,255,255, 0.4) !important;
   }
 </style>
