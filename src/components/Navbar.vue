@@ -15,13 +15,13 @@
       <div class="navbar-menu" :class="{ 'is-active': mobile }">
         <div class="navbar-end">
           <router-link to="/signin" v-if="!isSignedIn" class="navbar-item">
-            <span @click="toggleBurger">Sign In</span>
+            Sign In
           </router-link>
           <router-link to="/signup" v-if="!isSignedIn" class="navbar-item">
-            <span @click="toggleBurger">Sign Up</span>
+            Sign Up
           </router-link>
           <router-link to="/saved" v-if="isSignedIn" class="navbar-item">
-            <span @click="toggleBurger">Saved</span>
+            Saved
           </router-link>
           <a v-if="isSignedIn" class="navbar-item" @click="logout">Logout</a>
         </div>

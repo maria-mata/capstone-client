@@ -38,7 +38,7 @@ export default {
 }
 
 .box {
-  background: rgba(255,255,255, 0.8);
+  background: rgba(255,255,255, 0.8) !important;
 }
 
 h2.title {
