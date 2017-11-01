@@ -42,7 +42,7 @@ export default {
     submitForm(input) {
       this.analyzeTone(input)
       this.textInput = ''
-      this.jump(550)
+      this.jump(750)
     }
   }
 }
