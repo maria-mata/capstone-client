@@ -41,8 +41,9 @@ export default {
   background: rgba(255,255,255, 0.8) !important;
 }
 
-h2.title {
+h2.title, p.modal-card-title {
   font-family: 'Lora', serif;
+  font-weight: bold;
 }
 
 @media (min-width: 320px) {
