@@ -33,30 +33,34 @@ export default {
   },
   methods: {
     analyzeTone(textInput) {
-      this.description = textInput
-      const settings = {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          text: this.description
+      if (textInput === '') {
+        this.createImage('all', 'all')
+      } else {
+        this.description = textInput
+        const settings = {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            text: this.description
+          })
+        }
+        fetch(`${url}/mood`, settings)
+        .then(response => response.json())
+        .then(response => {
+          const data = JSON.parse(response)
+          this.tones = data['document_tone']['tones']
+          const highest = this.tones.sort((a, b) => {
+            return b.score - a.score
+          })[0]
+          const colors = this.parseTone(highest.tone_id)
+          
+          this.tones.length == 0 ? this.createImage('all', 'all') :
+          this.createImage(colors[0], colors[1])
         })
       }
-      fetch(`${url}/mood`, settings)
-      .then(response => response.json())
-      .then(response => {
-        const data = JSON.parse(response)
-        this.tones = data['document_tone']['tones']
-        const highest = this.tones.sort((a, b) => {
-          return b.score - a.score
-        })[0]
-        const colors = this.parseTone(highest.tone_id)
-
-        this.tones.length == 0 ? this.createImage('all', 'all') :
-        this.createImage(colors[0], colors[1])
-      })
       this.showArtboard = true
     },
     createImage(color1, color2) {
