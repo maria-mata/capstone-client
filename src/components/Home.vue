@@ -35,6 +35,7 @@ export default {
     analyzeTone(textInput) {
       if (textInput === '') {
         this.createImage('all', 'all')
+        this.description = 'No input provided.'
       } else {
         this.description = textInput
         const settings = {
@@ -55,10 +56,12 @@ export default {
           const highest = this.tones.sort((a, b) => {
             return b.score - a.score
           })[0]
-          const colors = this.parseTone(highest.tone_id)
-          
-          this.tones.length == 0 ? this.createImage('all', 'all') :
-          this.createImage(colors[0], colors[1])
+          if (highest != undefined) {
+            const colors = this.parseTone(highest.tone_id)
+            this.createImage(colors[0], colors[1])
+          } else {
+            this.createImage('all', 'all')
+          }
         })
       }
       this.showArtboard = true
