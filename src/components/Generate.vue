@@ -27,22 +27,18 @@
 </template>
 
 <script>
-import jump from 'jump.js'
-
 export default {
   name: 'generate',
   props: ['analyzeTone'],
   data() {
     return {
-      textInput: '',
-      jump: jump
+      textInput: ''
     }
   },
   methods: {
     submitForm(input) {
       this.analyzeTone(input)
       this.textInput = ''
-      this.jump(750)
     }
   }
 }

@@ -12,6 +12,7 @@
 import Generate from './Generate'
 import Artboard from './Artboard'
 import Drawing from '../lib/drawing.js'
+import jump from 'jump.js'
 
 const url = 'https://moodpix.herokuapp.com'
 
@@ -36,6 +37,8 @@ export default {
       if (textInput === '') {
         this.createImage('all', 'all')
         this.description = 'No input provided.'
+        this.showArtboard = true
+        jump(750)
       } else {
         this.description = textInput
         const settings = {
@@ -62,9 +65,10 @@ export default {
           } else {
             this.createImage('all', 'all')
           }
+          this.showArtboard = true
+          jump(750)
         })
       }
-      this.showArtboard = true
     },
     createImage(color1, color2) {
       if (this.art !== '') {
