@@ -5,6 +5,7 @@
     <!-- Image Component (Output)-->
     <artboard v-show="showArtboard" :isSignedIn="isSignedIn" :svgDownloadPath="svgDownloadPath"
     :saveImage="saveImage" :description="description" :tones="tones"/>
+    <b-loading :active.sync="isLoading"></b-loading>
   </div>
 </template>
 
@@ -29,15 +30,19 @@ export default {
       description: '',
       tones: null,
       showArtboard: false,
-      svgDownloadPath: null
+      svgDownloadPath: null,
+      isLoading: false
     }
   },
   methods: {
     analyzeTone(textInput) {
+      this.isLoading = true
       if (textInput === '') {
         this.createImage('all', 'all')
         this.description = 'No input provided.'
+        this.tones = null
         this.showArtboard = true
+        this.isLoading = false
         jump(750)
       } else {
         this.description = textInput
@@ -66,6 +71,7 @@ export default {
             this.createImage('all', 'all')
           }
           this.showArtboard = true
+          this.isLoading = false
           jump(750)
         })
       }
